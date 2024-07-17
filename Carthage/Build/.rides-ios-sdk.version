@@ -1,0 +1,42 @@
+{
+  "watchOS" : [
+
+  ],
+  "commitish" : "v0.14.2",
+  "Mac" : [
+
+  ],
+  "tvOS" : [
+
+  ],
+  "iOS" : [
+    {
+      "name" : "UberCore",
+      "container" : "UberCore.xcframework",
+      "identifier" : "ios-arm64",
+      "hash" : "140bd899b7be572f4ed949deea5068f1d585bf9279e95e06f1bed3080de5b03a",
+      "swiftToolchainVersion" : "5.10 (swiftlang-5.10.0.13 clang-1500.3.9.4)"
+    },
+    {
+      "identifier" : "ios-arm64_x86_64-simulator",
+      "swiftToolchainVersion" : "5.10 (swiftlang-5.10.0.13 clang-1500.3.9.4)",
+      "container" : "UberCore.xcframework",
+      "name" : "UberCore",
+      "hash" : "a285f94e6fd067c4780eed4c74c9aadbf80de4dcda326c355dd2b574b135ee87"
+    },
+    {
+      "swiftToolchainVersion" : "5.10 (swiftlang-5.10.0.13 clang-1500.3.9.4)",
+      "name" : "UberRides",
+      "hash" : "68678bfd63d0d64f02f07e41108b9f3514675370f65b85a45b3b40d4b92f529f",
+      "container" : "UberRides.xcframework",
+      "identifier" : "ios-arm64"
+    },
+    {
+      "swiftToolchainVersion" : "5.10 (swiftlang-5.10.0.13 clang-1500.3.9.4)",
+      "identifier" : "ios-arm64_x86_64-simulator",
+      "container" : "UberRides.xcframework",
+      "name" : "UberRides",
+      "hash" : "7991b5e7227afeababdc5f275883f9ed43a91a337c877d865c75789c428a8bb8"
+    }
+  ]
+}
