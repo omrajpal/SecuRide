@@ -11,5 +11,14 @@
 	<string>AamFhQ37nHHGfBa47yTuKTEiZ-RlEcvB</string>
 	<key>UberDisplayName</key>
 	<string>SecuRide</string>
+	<key>UberCallbackURIs</key>
+	<array>
+		<dict>
+			<key>UberCallbackURIType</key>
+			<string>General</string>
+			<key>URIString</key>
+			<string>com.asaravan.SecuRide://oauth/consumer</string>
+		</dict>
+	</array>
 </dict>
 </plist>
