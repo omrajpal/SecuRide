@@ -11,8 +11,8 @@ import OSLog
 import Supabase
 
 let supabase = SupabaseClient(
-  supabaseURL: URL(string: "http://127.0.0.1:54321")!,
-  supabaseKey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS1kZW1vIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImV4cCI6MTk4MzgxMjk5Nn0.EGIM96RAZx35lJzdJsyH-qQwv8Hdp7fsn3W0YpN81IU",
+  supabaseURL: URL(string: "https://bdhvlsqtkvhbukvbnsfl.supabase.co")!,
+  supabaseKey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJkaHZsc3F0a3ZoYnVrdmJuc2ZsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjEzOTYxNjAsImV4cCI6MjAzNjk3MjE2MH0.CWZYcMb1F3OjQfpDtGeSVUIj7MIj4EdIVZ1YN4yvyKQ",
   options: .init(
     global: .init(logger: AppLogger())
   )
