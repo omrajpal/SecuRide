@@ -2,23 +2,34 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLName</key>
+			<string>com.asaravan.securide</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.asaravan.securide</string>
+			</array>
+		</dict>
+	</array>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>uber</string>
 		<string>uberauth</string>
 	</array>
+	<key>UberCallbackURIs</key>
+	<array>
+		<dict>
+			<key>URIString</key>
+			<string>com.asaravan.securide://oauth/consumer</string>
+			<key>UberCallbackURIType</key>
+			<string>General</string>
+		</dict>
+	</array>
 	<key>UberClientID</key>
 	<string>AamFhQ37nHHGfBa47yTuKTEiZ-RlEcvB</string>
 	<key>UberDisplayName</key>
 	<string>SecuRide</string>
-	<key>UberCallbackURIs</key>
-	<array>
-		<dict>
-			<key>UberCallbackURIType</key>
-			<string>General</string>
-			<key>URIString</key>
-			<string>com.asaravan.SecuRide://oauth/consumer</string>
-		</dict>
-	</array>
 </dict>
 </plist>

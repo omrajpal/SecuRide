@@ -14,7 +14,7 @@ struct ContentView: View {
                 .imageScale(.large)
                 .foregroundStyle(.tint)
             Text("Hello, world!")
-            UberLoginButton()  // Add the Uber login button here
+            UberLoginButton()
                 .frame(height: 50)  // Optionally set height for the button
                 .padding()
         }
