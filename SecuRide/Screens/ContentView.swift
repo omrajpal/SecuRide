@@ -89,3 +89,7 @@ struct MapView: UIViewRepresentable {
     }
 }
 
+
+#Preview {
+  ContentView()
+}
