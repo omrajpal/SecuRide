@@ -7,23 +7,37 @@
 
 
 import SwiftUI
+import Foundation
 
 struct AppView: View {
-    @Binding var appUser: AppUser?
-
-  var body: some View {
-      ZStack {
-          if let appUser = appUser {
-              HomeView()
-          } else {
-              GoogleAuthView(appUser: $appUser)
-          }
-      }.onAppear {
-          Task {
-              self.appUser = try await AuthManager.shared.getCurrentSession()
-          }
-      }
-  }
+    @State var appUser: AppUser? = nil
+    
+    var body: some View {
+        ZStack {
+            if let _ = appUser {
+                TabView {
+                    HistoryView()
+                        .tabItem {
+                            Label("History", systemImage: "tray")
+                        }
+                    HomeView()
+                        .tabItem {
+                            Label("Home", systemImage: "home")
+                        }
+                    AccountView(appUser: $appUser)
+                        .tabItem {
+                            Label("Account", systemImage: "person")
+                        }
+                }
+            } else {
+                GoogleAuthView(appUser: $appUser)
+            }
+        }.onAppear {
+            Task {
+                self.appUser = try await AuthManager.shared.getCurrentSession()
+            }
+        }
+    }
 }
 
 #Preview {
