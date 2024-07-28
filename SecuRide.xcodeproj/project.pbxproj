@@ -157,6 +157,14 @@
 			path = GoogleSignIn;
 			sourceTree = "<group>";
 		};
+		6BA11C7D2C56B831000A8CC9 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				9AB44F032C443EC500BB7F7D /* ContentView.swift */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
 		9AB44EF52C443EC400BB7F7D = {
 			isa = PBXGroup;
 			children = (
@@ -182,6 +190,7 @@
 		9AB44F002C443EC400BB7F7D /* SecuRide */ = {
 			isa = PBXGroup;
 			children = (
+				6BA11C7D2C56B831000A8CC9 /* Screens */,
 				6BB390582C487C1D00820B64 /* Info.plist */,
 				9AB44F012C443EC500BB7F7D /* SecuRideApp.swift */,
 				6BA11C7A2C56B621000A8CC9 /* GoogleSignIn */,
@@ -191,7 +200,6 @@
 				6BA11C722C4DAAB9000A8CC9 /* AvatarImage.swift */,
 				9A37815B2C4DA997004731CC /* Models.swift */,
 				9A3781552C4DA838004731CC /* AuthView.swift */,
-				9AB44F032C443EC500BB7F7D /* ContentView.swift */,
 				9AB44F052C443EC700BB7F7D /* Assets.xcassets */,
 				9AB44F072C443EC700BB7F7D /* Preview Content */,
 				6BA11C6A2C4887C5000A8CC9 /* UberButton.swift */,
