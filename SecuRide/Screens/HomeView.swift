@@ -14,6 +14,7 @@ struct HomeView: View {
     var body: some View {
         ZStack {
             if self.isActive {
+                // create tabs here instead of in the other view.
                 ContentView()
             } else {
                 Rectangle()
