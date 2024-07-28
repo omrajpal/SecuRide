@@ -9,26 +9,23 @@
 import SwiftUI
 
 struct AppView: View {
-  @State var isAuthenticated = false
+    @Binding var appUser: AppUser?
 
   var body: some View {
-    Group {
-      if isAuthenticated {
-        ProfileView()
-      } else {
-        AuthView()
+      ZStack {
+          if let appUser = appUser {
+              HomeView()
+          } else {
+              GoogleAuthView(appUser: $appUser)
+          }
+      }.onAppear {
+          Task {
+              self.appUser = try await AuthManager.shared.getCurrentSession()
+          }
       }
-    }
-    .task {
-      for await state in supabase.auth.authStateChanges {
-        if [.initialSession, .signedIn, .signedOut].contains(state.event) {
-          isAuthenticated = state.session != nil
-        }
-      }
-    }
   }
 }
 
 #Preview {
-  AppView()
+    AppView(appUser: .constant(nil))
 }

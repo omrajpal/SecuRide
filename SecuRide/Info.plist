@@ -14,6 +14,16 @@
 				<string>com.asaravan.securide</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleIdentifier</key>
+			<string></string>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.438557029951-u83dck69cr35ha1mfgukh735fi9084ef</string>
+			</array>
+		</dict>
 	</array>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
@@ -33,5 +43,7 @@
 	<string>AamFhQ37nHHGfBa47yTuKTEiZ-RlEcvB</string>
 	<key>UberDisplayName</key>
 	<string>SecuRide</string>
+	<key>GIDClientID</key>
+	<string>438557029951-u83dck69cr35ha1mfgukh735fi9084ef.apps.googleusercontent.com</string>
 </dict>
 </plist>

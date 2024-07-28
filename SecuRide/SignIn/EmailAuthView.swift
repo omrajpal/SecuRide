@@ -1,5 +1,5 @@
 //
-//  AuthView.swift
+//  EmailAuthView.swift
 //  SecuRide
 //
 //  Created by Om Rajpal on 7/21/24.
@@ -10,7 +10,7 @@ import Supabase
 import SwiftUI
 
 @MainActor
-struct AuthView: View {
+struct EmailAuthView: View {
   @State var email = ""
   @State var isLoading = false
   @State var result: Result<Void, Error>?
@@ -76,5 +76,5 @@ struct AuthView: View {
 }
 
 #Preview {
-  AuthView()
+  EmailAuthView()
 }

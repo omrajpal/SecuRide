@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		221DD1B8705769E853E73901 /* Pods_SecuRide.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C7AFD25D02589B0B04FDC5D /* Pods_SecuRide.framework */; };
 		6B9F5B482C56BAB300F9D5BC /* Supabase in Frameworks */ = {isa = PBXBuildFile; productRef = 6B9F5B472C56BAB300F9D5BC /* Supabase */; };
+		6B9F5B4A2C56BE2100F9D5BC /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9F5B492C56BE2100F9D5BC /* AuthManager.swift */; };
+		6B9F5B4C2C56BF2C00F9D5BC /* SignInGoogle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9F5B4B2C56BF2C00F9D5BC /* SignInGoogle.swift */; };
+		6B9F5B4E2C56C58100F9D5BC /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9F5B4D2C56C58100F9D5BC /* SignInViewModel.swift */; };
 		6BA11C652C488468000A8CC9 /* UberCore.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BA11C632C488467000A8CC9 /* UberCore.xcframework */; };
 		6BA11C662C488468000A8CC9 /* UberCore.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6BA11C632C488467000A8CC9 /* UberCore.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6BA11C672C488468000A8CC9 /* UberRides.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BA11C642C488467000A8CC9 /* UberRides.xcframework */; };
@@ -20,7 +23,7 @@
 		6BA11C772C4DAB1F000A8CC9 /* SwiftUIHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA11C762C4DAB1F000A8CC9 /* SwiftUIHelpers.swift */; };
 		6BA11C792C56B598000A8CC9 /* GoogleAuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA11C782C56B598000A8CC9 /* GoogleAuthView.swift */; };
 		9A3781542C4DA7CE004731CC /* Supabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3781532C4DA7CE004731CC /* Supabase.swift */; };
-		9A3781562C4DA838004731CC /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3781552C4DA838004731CC /* AuthView.swift */; };
+		9A3781562C4DA838004731CC /* EmailAuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3781552C4DA838004731CC /* EmailAuthView.swift */; };
 		9A3781582C4DA942004731CC /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3781572C4DA941004731CC /* AppView.swift */; };
 		9A37815A2C4DA972004731CC /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3781592C4DA972004731CC /* ProfileView.swift */; };
 		9A37815C2C4DA997004731CC /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37815B2C4DA997004731CC /* Models.swift */; };
@@ -73,6 +76,9 @@
 		25FAD2AA04B13E68E34863A4 /* Pods-SecuRide.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SecuRide.release.xcconfig"; path = "Target Support Files/Pods-SecuRide/Pods-SecuRide.release.xcconfig"; sourceTree = "<group>"; };
 		4EB67FD0356B7451645CBBCB /* Pods-SecuRide-SecuRideUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SecuRide-SecuRideUITests.debug.xcconfig"; path = "Target Support Files/Pods-SecuRide-SecuRideUITests/Pods-SecuRide-SecuRideUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		6ACB05B880371CCC2E781140 /* Pods_SecuRideTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SecuRideTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6B9F5B492C56BE2100F9D5BC /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
+		6B9F5B4B2C56BF2C00F9D5BC /* SignInGoogle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInGoogle.swift; sourceTree = "<group>"; };
+		6B9F5B4D2C56C58100F9D5BC /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		6BA11C632C488467000A8CC9 /* UberCore.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = UberCore.xcframework; path = Carthage/Build/UberCore.xcframework; sourceTree = "<group>"; };
 		6BA11C642C488467000A8CC9 /* UberRides.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = UberRides.xcframework; path = Carthage/Build/UberRides.xcframework; sourceTree = "<group>"; };
 		6BA11C6A2C4887C5000A8CC9 /* UberButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UberButton.swift; sourceTree = "<group>"; };
@@ -81,11 +87,10 @@
 		6BA11C722C4DAAB9000A8CC9 /* AvatarImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarImage.swift; sourceTree = "<group>"; };
 		6BA11C762C4DAB1F000A8CC9 /* SwiftUIHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIHelpers.swift; sourceTree = "<group>"; };
 		6BA11C782C56B598000A8CC9 /* GoogleAuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAuthView.swift; sourceTree = "<group>"; };
-		6BA11C7B2C56B690000A8CC9 /* GoogleSignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleSignInViewModel.swift; sourceTree = "<group>"; };
 		6BB390582C487C1D00820B64 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		6C7AFD25D02589B0B04FDC5D /* Pods_SecuRide.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SecuRide.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A3781532C4DA7CE004731CC /* Supabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Supabase.swift; sourceTree = "<group>"; };
-		9A3781552C4DA838004731CC /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
+		9A3781552C4DA838004731CC /* EmailAuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailAuthView.swift; sourceTree = "<group>"; };
 		9A3781572C4DA941004731CC /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
 		9A3781592C4DA972004731CC /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		9A37815B2C4DA997004731CC /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
@@ -149,13 +154,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		6BA11C7A2C56B621000A8CC9 /* GoogleSignIn */ = {
+		6BA11C7A2C56B621000A8CC9 /* SignIn */ = {
 			isa = PBXGroup;
 			children = (
+				9A3781552C4DA838004731CC /* EmailAuthView.swift */,
 				6BA11C782C56B598000A8CC9 /* GoogleAuthView.swift */,
-				6BA11C7B2C56B690000A8CC9 /* GoogleSignInViewModel.swift */,
+				6B9F5B4B2C56BF2C00F9D5BC /* SignInGoogle.swift */,
+				6B9F5B4D2C56C58100F9D5BC /* SignInViewModel.swift */,
 			);
-			path = GoogleSignIn;
+			path = SignIn;
 			sourceTree = "<group>";
 		};
 		9AB44EF52C443EC400BB7F7D = {
@@ -186,19 +193,19 @@
 				9AF3900A2C56AF3C004B947B /* Screens */,
 				6BB390582C487C1D00820B64 /* Info.plist */,
 				9AB44F012C443EC500BB7F7D /* SecuRideApp.swift */,
-				6BA11C7A2C56B621000A8CC9 /* GoogleSignIn */,
+				6BA11C7A2C56B621000A8CC9 /* SignIn */,
 				9A3781532C4DA7CE004731CC /* Supabase.swift */,
 				9A3781572C4DA941004731CC /* AppView.swift */,
 				9A3781592C4DA972004731CC /* ProfileView.swift */,
 				6BA11C722C4DAAB9000A8CC9 /* AvatarImage.swift */,
 				9A37815B2C4DA997004731CC /* Models.swift */,
-				9A3781552C4DA838004731CC /* AuthView.swift */,
 				9AB44F052C443EC700BB7F7D /* Assets.xcassets */,
 				9AB44F072C443EC700BB7F7D /* Preview Content */,
 				6BA11C6A2C4887C5000A8CC9 /* UberButton.swift */,
 				6BA11C6E2C4C42BE000A8CC9 /* UberOAuthViewModel.swift */,
 				6BA11C6C2C4BF2EB000A8CC9 /* UberLoginManager.swift */,
 				6BA11C762C4DAB1F000A8CC9 /* SwiftUIHelpers.swift */,
+				6B9F5B492C56BE2100F9D5BC /* AuthManager.swift */,
 			);
 			path = SecuRide;
 			sourceTree = "<group>";
@@ -496,13 +503,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9A3781562C4DA838004731CC /* AuthView.swift in Sources */,
+				9A3781562C4DA838004731CC /* EmailAuthView.swift in Sources */,
 				9AF3900C2C56AF4B004B947B /* HomeView.swift in Sources */,
+				6B9F5B4C2C56BF2C00F9D5BC /* SignInGoogle.swift in Sources */,
 				6BA11C772C4DAB1F000A8CC9 /* SwiftUIHelpers.swift in Sources */,
 				9A37815A2C4DA972004731CC /* ProfileView.swift in Sources */,
+				6B9F5B4A2C56BE2100F9D5BC /* AuthManager.swift in Sources */,
 				6BA11C732C4DAAB9000A8CC9 /* AvatarImage.swift in Sources */,
 				9AB44F042C443EC500BB7F7D /* ContentView.swift in Sources */,
 				9A3781542C4DA7CE004731CC /* Supabase.swift in Sources */,
+				6B9F5B4E2C56C58100F9D5BC /* SignInViewModel.swift in Sources */,
 				9AB44F022C443EC500BB7F7D /* SecuRideApp.swift in Sources */,
 				9A3781582C4DA942004731CC /* AppView.swift in Sources */,
 				6BA11C6F2C4C42BE000A8CC9 /* UberOAuthViewModel.swift in Sources */,

@@ -6,12 +6,17 @@
 //
 
 import SwiftUI
+import GoogleSignIn
+import SwiftUI
 
 @main
 struct SecuRideApp: App {
-  var body: some Scene {
-    WindowGroup {
-      HomeView()
+    var body: some Scene {
+        WindowGroup {
+            AppView(appUser: .constant(nil))
+                .onOpenURL { url in
+                  GIDSignIn.sharedInstance.handle(url)
+                }
+        }
     }
-  }
 }
