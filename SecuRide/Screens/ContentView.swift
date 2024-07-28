@@ -54,6 +54,8 @@ struct InfoView: View {
 struct Sheet: View {
     @State var search = ""
     @Binding var centerCoordinate: CLLocationCoordinate2D
+    @State private var searchCompleter = MKLocalSearchCompleter()
+    @State private var searchResults = [MKLocalSearchCompletion]()
 
     var body: some View {
         VStack {
@@ -63,8 +65,8 @@ struct Sheet: View {
 
             HStack {
                 Image(systemName: "magnifyingglass")
-                TextField("Search for a place or address", text: $search, onCommit: {
-                    performSearch()
+                TextField("Search for a place or address", text: $search, onEditingChanged: { _ in
+                    searchCompleter.queryFragment = search
                 })
                     .foregroundColor(.primary)
                 Image(systemName: "mic.fill")
@@ -73,16 +75,29 @@ struct Sheet: View {
             .padding(12)
             .background(Color(UIColor.tertiarySystemGroupedBackground))
             .cornerRadius(12)
+
+            List(searchResults, id: \.self) { completion in
+                Button(action: {
+                    search(for: completion)
+                }) {
+                    Text(completion.title)
+                        .foregroundColor(.primary)
+                    Text(completion.subtitle)
+                        .foregroundColor(.secondary)
+                }
+            }
         }
         .padding(24)
         .padding(.top, -16)
         .background(Color(UIColor.secondarySystemGroupedBackground))
         .cornerRadius(12)
+        .onAppear {
+            searchCompleter.delegate = SearchCompleterDelegate(results: $searchResults)
+        }
     }
 
-    func performSearch() {
-        let searchRequest = MKLocalSearch.Request()
-        searchRequest.naturalLanguageQuery = search
+    func search(for completion: MKLocalSearchCompletion) {
+        let searchRequest = MKLocalSearch.Request(completion: completion)
         let search = MKLocalSearch(request: searchRequest)
         search.start { response, error in
             guard let response = response else {
@@ -94,6 +109,22 @@ struct Sheet: View {
                 centerCoordinate = coordinate
             }
         }
+    }
+}
+
+class SearchCompleterDelegate: NSObject, MKLocalSearchCompleterDelegate {
+    @Binding var results: [MKLocalSearchCompletion]
+
+    init(results: Binding<[MKLocalSearchCompletion]>) {
+        _results = results
+    }
+
+    func completerDidUpdateResults(_ completer: MKLocalSearchCompleter) {
+        results = completer.results
+    }
+
+    func completer(_ completer: MKLocalSearchCompleter, didFailWithError error: Error) {
+        print("Error: \(error.localizedDescription)")
     }
 }
 
@@ -111,7 +142,6 @@ struct Controls: View {
                 }
                 Divider()
                 Button(action: {
-                    // Action to bring map back to user's current location
                     if let location = LocationManager.shared.lastLocation {
                         centerCoordinate = location.coordinate
                     }
@@ -161,6 +191,7 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
 struct MapView: UIViewRepresentable {
     @Binding var centerCoordinate: CLLocationCoordinate2D
     let locationManager = CLLocationManager()
+    @State private var shouldCenterOnUserLocation = true
 
     class Coordinator: NSObject, MKMapViewDelegate, CLLocationManagerDelegate {
         var parent: MapView
@@ -176,14 +207,16 @@ struct MapView: UIViewRepresentable {
 
         func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
             guard let location = locations.first else { return }
-            self.parent.centerCoordinate = location.coordinate
-            let region = MKCoordinateRegion(center: location.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05))
-            self.mapView?.setRegion(region, animated: true)
+            if self.parent.shouldCenterOnUserLocation {
+                self.parent.centerCoordinate = location.coordinate
+                let region = MKCoordinateRegion(center: location.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05))
+                self.mapView?.setRegion(region, animated: true)
+                self.parent.shouldCenterOnUserLocation = false // Only center on first update
+            }
         }
 
         func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
-            let region = MKCoordinateRegion(center: userLocation.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05))
-            mapView.setRegion(region, animated: true)
+            // You can also update the map here if needed
         }
     }
 
