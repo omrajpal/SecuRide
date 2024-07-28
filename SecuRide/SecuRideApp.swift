@@ -13,10 +13,11 @@ import SwiftUI
 struct SecuRideApp: App {
     var body: some Scene {
         WindowGroup {
-            AppView(appUser: .constant(nil))
-                .onOpenURL { url in
-                  GIDSignIn.sharedInstance.handle(url)
-                }
+//            AppView(appUser: .constant(nil))
+//                .onOpenURL { url in
+//                  GIDSignIn.sharedInstance.handle(url)
+//                }
+            HomeView()
         }
     }
 }
