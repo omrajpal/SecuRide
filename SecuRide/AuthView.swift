@@ -39,7 +39,7 @@ struct AuthView: View {
       if let result {
         Section {
           switch result {
-          case .success: Text("Check you inbox.")
+          case .success: Text("Check your inbox.")
           case let .failure(error): Text(error.localizedDescription).foregroundStyle(.red)
           }
         }
@@ -65,7 +65,7 @@ struct AuthView: View {
       do {
         try await supabase.auth.signInWithOTP(
           email: email,
-          redirectTo: URL(string: "io.supabase.user-management://login-callback")
+          redirectTo: URL(string: "com.asaravan.securide://login-callback")
         )
         result = .success(())
       } catch {
