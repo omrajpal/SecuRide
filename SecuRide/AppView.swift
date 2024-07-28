@@ -24,7 +24,7 @@ struct AppView: View {
                         .tabItem {
                             Label("Home", systemImage: "home")
                         }
-                    AccountView(appUser: $appUser)
+                    AccountView()
                         .tabItem {
                             Label("Account", systemImage: "person")
                         }
@@ -41,5 +41,5 @@ struct AppView: View {
 }
 
 #Preview {
-    AppView(appUser: .constant(nil))
+    AppView()
 }
