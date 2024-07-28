@@ -8,15 +8,18 @@
 import SwiftUI
 
 struct LoadingView: View {
+    var message: String
+    
     var body: some View {
         VStack {
             ProgressView()
                 .progressViewStyle(CircularProgressViewStyle())
-            Text("Loading...")
+            Text(message)
+                .padding(.top, 10)
         }
     }
 }
 
 #Preview {
-    LoadingView()
+    LoadingView(message: "Loading")
 }
