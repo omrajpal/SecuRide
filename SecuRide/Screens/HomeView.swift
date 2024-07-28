@@ -14,7 +14,7 @@ struct HomeView: View {
     var body: some View {
         ZStack {
             if self.isActive {
-                MainView()
+                ContentView()
             } else {
                 Rectangle()
                     .background(Color.black)
