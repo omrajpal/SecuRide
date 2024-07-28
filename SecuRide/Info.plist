@@ -45,5 +45,9 @@
 	<string>SecuRide</string>
 	<key>GIDClientID</key>
 	<string>438557029951-u83dck69cr35ha1mfgukh735fi9084ef.apps.googleusercontent.com</string>
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>We need your location to show it on the map.</string>
+    <key>NSLocationAlwaysUsageDescription</key>
+    <string>We need your location to show it on the map.</string>
 </dict>
 </plist>
