@@ -15,7 +15,7 @@ struct HomeView: View {
         ZStack {
             if self.isActive {
                 // create tabs here instead of in the other view.
-                ContentView()
+                SearchView()
             } else {
                 Rectangle()
                     .background(Color.black)

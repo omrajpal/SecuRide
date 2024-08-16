@@ -1,18 +1,33 @@
+////
+////  HomeMapView.swift
+////  SecuRide
+////
+////  Created by Ashok Saravanan on 8/16/24.
+////
 //
-//  HomeMapView.swift
-//  SecuRide
+//import SwiftUI
+//import MapKit
 //
-//  Created by Ashok Saravanan on 8/16/24.
+//struct HomeMapView: View {
+//    var body: some View {
+//        Map {
+//            Marker("San Francisco City Hall", coordinate: cityHallLocation)
+//                .tint(.orange)
+//            Marker("San Francisco Public Library", coordinate: publicLibraryLocation)
+//                .tint(.blue)
+//            Annotation("Diller Civic Center Playground", coordinate: playgroundLocation) {
+//                ZStack {
+//                    RoundedRectangle(cornerRadius: 5)
+//                        .fill(Color.yellow)
+//                    Text("🛝")
+//                        .padding(5)
+//                }
+//            }
+//        }
+//        .mapControlVisibility(.hidden)
+//    }
+//}
 //
-
-import SwiftUI
-
-struct HomeMapView: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
-}
-
-#Preview {
-    HomeMapView()
-}
+//#Preview {
+//    HomeMapView()
+//}
