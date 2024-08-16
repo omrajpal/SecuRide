@@ -99,14 +99,15 @@ struct Sheet: View {
     func search(for completion: MKLocalSearchCompletion) {
         let searchRequest = MKLocalSearch.Request(completion: completion)
         let search = MKLocalSearch(request: searchRequest)
-        search.start { response, error in
-            guard let response = response else {
+        search.start { [weak self] response, error in
+            guard let strongSelf = self, let response = response else {
                 print("Error: \(error?.localizedDescription ?? "Unknown error")")
                 return
             }
             if let mapItem = response.mapItems.first {
                 let coordinate = mapItem.placemark.coordinate
-                centerCoordinate = coordinate
+                strongSelf.centerCoordinate = coordinate
+                strongSelf.mapViewCoordinator?.calculateRoute(from: locationManager.lastLocation?.coordinate ?? CLLocationCoordinate2D(), to: coordinate)
             }
         }
     }
@@ -131,6 +132,7 @@ class SearchCompleterDelegate: NSObject, MKLocalSearchCompleterDelegate {
 struct Controls: View {
     @Binding var centerCoordinate: CLLocationCoordinate2D
     @Binding var showingInfoView: Bool
+    var mapViewCoordinator: MapView.Coordinator?
 
     var body: some View {
         VStack(spacing: 6) {
@@ -168,7 +170,13 @@ struct Controls: View {
         .foregroundColor(.blue)
         .padding()
         .shadow(color: Color(UIColor.black.withAlphaComponent(0.1)), radius: 4)
+        Button(action: {
+                    mapViewCoordinator?.calculateRoute(from: LocationManager.shared.lastLocation?.coordinate ?? CLLocationCoordinate2D(), to: centerCoordinate)
+                }) {
+                    Image(systemName: "location.fill")
+                }
     }
+    
 }
 
 class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
@@ -204,7 +212,7 @@ struct MapView: UIViewRepresentable {
             self.parent.locationManager.requestWhenInUseAuthorization()
             self.parent.locationManager.startUpdatingLocation()
         }
-
+        
         func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
             guard let location = locations.first else { return }
             if self.parent.shouldCenterOnUserLocation {
@@ -214,9 +222,35 @@ struct MapView: UIViewRepresentable {
                 self.parent.shouldCenterOnUserLocation = false // Only center on first update
             }
         }
-
-        func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
-            // You can also update the map here if needed
+        
+        func calculateRoute(from origin: CLLocationCoordinate2D, to destination: CLLocationCoordinate2D) {
+            let originPlacemark = MKPlacemark(coordinate: origin)
+            let destinationPlacemark = MKPlacemark(coordinate: destination)
+            
+            let directionRequest = MKDirections.Request()
+            directionRequest.source = MKMapItem(placemark: originPlacemark)
+            directionRequest.destination = MKMapItem(placemark: destinationPlacemark)
+            directionRequest.transportType = .automobile
+            
+            let directions = MKDirections(request: directionRequest)
+            directions.calculate { [weak self] (response, error) in
+                guard let strongSelf = self else { return }
+                if let route = response?.routes.first {
+                    strongSelf.mapView?.addOverlay(route.polyline)
+                    let region = MKCoordinateRegion(route.polyline.boundingMapRect)
+                    strongSelf.mapView?.setRegion(region, animated: true)
+                }
+            }
+        }
+        
+        func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+            if let polyline = overlay as? MKPolyline {
+                let renderer = MKPolylineRenderer(polyline: polyline)
+                renderer.strokeColor = .blue
+                renderer.lineWidth = 5
+                return renderer
+            }
+            return MKOverlayRenderer()
         }
     }
 
